@@ -1,6 +1,6 @@
 import { useReducer } from 'react';
 import CartContext from './cart-context';
-
+import { ContextDevTool } from "react-context-devtool";
 
 
 const defaultCartState = {
@@ -91,7 +91,8 @@ const CartProvider = (props) => {
 
     return (
         <CartContext.Provider value={cartContext}>
-            {props.children}
+            
+            {props.children}         
         </CartContext.Provider>
     )
 }
