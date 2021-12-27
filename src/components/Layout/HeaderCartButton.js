@@ -10,9 +10,8 @@ const HeaderCartButton = (props) => {
   const cartCtx = useContext(CartContext);
 
   const fnreducer = (currentNumber, item) => {
-    console.log(item)
-    return 0;
-     //return currentNumber + item.amount
+    console.log('fnreducer',currentNumber);
+    return currentNumber + item.amount
   };
 
   console.log(cartCtx.items);

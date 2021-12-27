@@ -1,7 +1,5 @@
 import { useReducer } from 'react';
 import CartContext from './cart-context';
-import { ContextDevTool } from "react-context-devtool";
-
 
 const defaultCartState = {
     items: [],
@@ -36,7 +34,7 @@ const cartReducer = (state, action) => {
 
         const newaddCart = {
             items: updatedItems,
-            total: updatedTotalAmount
+            totalAmount: updatedTotalAmount
         }
 
         return newaddCart 
@@ -44,7 +42,7 @@ const cartReducer = (state, action) => {
     
     if(action.type === 'REMOVE') {
         
-        const existingCartItemIndex = state.item.findIndex(
+        const existingCartItemIndex = state.items.findIndex(
             (item) => item.id === action.id
         );
 
@@ -53,7 +51,7 @@ const cartReducer = (state, action) => {
         let updatedItems;
         
         if(existingItem.amount === 1){
-            updatedItems = state.item.filter(item => item.id !== action.id);
+            updatedItems = state.items.filter(item => item.id !== action.id);
         }else {
             const updatedItem = {...existingItem, amount: existingItem.amount - 1};
             updatedItems = [...state.items];
@@ -62,7 +60,7 @@ const cartReducer = (state, action) => {
 
         return{
             items: updatedItems,
-            total: updatedTotalAmount
+            totalAmount: updatedTotalAmount
         }
     }
 
